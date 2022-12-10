@@ -14,7 +14,7 @@ namespace Point_of_Sale_Lab3.Data_Classes
         public int id { get; set; }
         public string lastName { get; set; }
         public string password { get; set; }
-        //username not in .yaml, but sounds like it would be needed
+        //username not in .yaml, but sounds like it would be needed as it is in for employee
         //public string username { get; set; }
     }
 }
