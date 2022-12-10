@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.Data_Classes
 {
-    internal class Shift
+    public class Shift
     {
         public int employeeId { get; set; }
         public TimeOnly endTime { get; set; }

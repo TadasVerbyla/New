@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.Data_Classes
 {
-    internal class Review
+    public class Review
     {
         public string comment { get; set; }
         public int id { get; set; }

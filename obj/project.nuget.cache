@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4unzzF0IUoedi7p8YqO2ot2+pDx+TZ+YFwLWl7Fj04JaXqoqP1y+aYXyIrebgWRuFfL9MJoG0MPKA5wDfUnRfw==",
+  "dgSpecHash": "dTU8PxHauOH50sukeENVmcxfgsQ+tbcwZNgzpGOzruJwnyOxITcfvtBaXKJQU9Pti7MQ7GvxGvnj8979sX+BRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tadas\\Desktop\\C# Repository\\Point_of_Sale_Lab3\\Point_of_Sale_Lab3.csproj",
+  "projectFilePath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tadas\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\tadas\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",

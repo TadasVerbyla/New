@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.Data_Classes
 {
-    internal class ModelAndView
+    public class ModelAndView
     {
         public bool empty { get; set; }
         public object model { get; set; } 

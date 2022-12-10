@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.Data_Classes
 {
-    internal class Timestamp
+    public class Timestamp
     {
     }
 }

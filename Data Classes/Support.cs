@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.Data_Classes
 {
-    internal class Support
+    public class Support
     {
+
     }
 }
