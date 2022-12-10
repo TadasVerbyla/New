@@ -8,5 +8,7 @@ namespace Point_of_Sale_Lab3.Data_Classes
 {
     public class View
     {
+        //What is this even used for? Only mentioned once in .yaml
+        public string contentType { get; set; }
     }
 }
