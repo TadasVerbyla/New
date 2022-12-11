@@ -18,7 +18,6 @@ namespace Point_of_Sale_Lab3.DB
         public DbSet<Checkout> checkouts { get; set; }
         public DbSet<Complaint> complaints { get; set; }
         public DbSet<Employee> employees { get; set; }
-        public DbSet<ModelAndView> modelAndViews { get; set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<Permission> permissions { get; set; }
         public DbSet<Review> reviews { get; set; }
@@ -26,7 +25,6 @@ namespace Point_of_Sale_Lab3.DB
         public DbSet<Support> support { get; set; }
         public DbSet<Timestamp> timestamps { get; set; }
         public DbSet<User> users { get; set; }
-        public DbSet<View> views { get; set; }
 
     }
 }
