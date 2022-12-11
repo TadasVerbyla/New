@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Point_of_Sale_Lab3.Data_Classes;
+using Point_of_Sale_Lab3.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
