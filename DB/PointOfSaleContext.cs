@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.DB
 {
-    internal class PointOfSaleContext: DbContext
+    public class PointOfSaleContext: DbContext
     {
         public PointOfSaleContext(): base()
         {
