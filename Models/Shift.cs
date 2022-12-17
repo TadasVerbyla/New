@@ -8,8 +8,8 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class Shift
     {
-        public int id { get; set; }
-        public Employee Employee { get; set; }
+        public Guid id { get; set; }
+        public Guid employeeId { get; set; }
         public DateTime endTime { get; set; }
         public DateTime startTime { get; set; }
         public int workdays { get; set; }

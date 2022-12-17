@@ -8,8 +8,8 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class Complaint
     {
-        public int id { get; set; }
-        public int orderId { get; set; }
+        public Guid id { get; set; }
+        public Guid orderId { get; set; }
         public string text { get; set; }
 
     }

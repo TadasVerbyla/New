@@ -8,7 +8,7 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class Permission
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string permission { get; set; }
     }
 }

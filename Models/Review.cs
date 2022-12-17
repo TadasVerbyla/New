@@ -9,7 +9,7 @@ namespace Point_of_Sale_Lab3.Models
     public class Review
     {
         public string comment { get; set; }
-        public int id { get; set; }
+        public Guid id { get; set; }
         public int score { get; set; }
     }
 }

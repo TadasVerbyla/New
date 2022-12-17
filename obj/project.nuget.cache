@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bT3a+a+fIX0yebHJlrma6NZ3+7+vSBg1HoSG/mYDKLstQ3Py0vZ8J3zu+otg/ex1BIRCaCNVDiSe+PILRqcW0Q==",
+  "dgSpecHash": "MVjAMqRrMXg+FzG3FXLyKtkXOkkKAryOtLGbN3rSavfVtKkQ8dKeoVqsK5ELKPLSTuBgTGW9V4wuldLpXjhYEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\tadas\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\tadas\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\tadas\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\tadas\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\tadas\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\tadas\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\tadas\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
