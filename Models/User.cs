@@ -8,7 +8,7 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class User
     {
-        public DateOnly birthdate { get; set; }
+        public DateTime birthdate { get; set; }
         public string email { get; set; }
         public string firstName { get; set; }
         public int id { get; set; }
