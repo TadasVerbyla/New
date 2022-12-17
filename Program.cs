@@ -1,23 +1,25 @@
-﻿using Point_of_Sale_Lab3.DB;
-using Point_of_Sale_Lab3.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿var builder = WebApplication.CreateBuilder(args);
 
-namespace Point_of_Sale_Lab3
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        static void Main(string[] args)
-        {
-            using (var ctx = new PointOfSaleContext())
-            {
-                var complaint = new Complaint() { id = 1, orderId = 2, text = "complaint" };
-                ctx.Complaints.Add(complaint);
-                ctx.SaveChanges();
-            }
-        }
-    }
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
