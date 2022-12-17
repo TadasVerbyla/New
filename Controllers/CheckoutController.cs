@@ -23,7 +23,7 @@ namespace Point_of_Sale_Lab3.Controllers
         }
 
         [HttpGet]
-        [Route("PoS/[controller]{id}")]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult GetCheckout(Guid id)
         {
             var checkout = checkoutData.GetCheckout(id);
