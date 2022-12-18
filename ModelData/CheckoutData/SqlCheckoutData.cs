@@ -21,12 +21,15 @@ namespace Point_of_Sale_Lab3.ModelData.CheckoutData
 
         public void DeleteCheckout(Guid id)
         {
-            throw new NotImplementedException();
+            context.Checkouts.Remove(GetCheckout(id));
+            context.SaveChanges();
         }
 
         public Checkout EditCheckout(Checkout checkout)
         {
-            throw new NotImplementedException();
+            context.Checkouts.Update(checkout);
+            context.SaveChanges();
+            return checkout;
         }
 
         public Checkout GetCheckout(Guid id)
