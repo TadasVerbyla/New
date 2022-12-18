@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.DB
 {
-    internal class PointOfSaleContext : DbContext
+    public class PointOfSaleContext : DbContext
     {
+        public PointOfSaleContext(DbContextOptions<PointOfSaleContext> options): base(options)
+        {
+
+        }
         public DbSet<Checkout> Checkouts { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -20,9 +24,9 @@ namespace Point_of_Sale_Lab3.DB
         public DbSet<Support> Support { get; set; }
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Database=PointOfSaleSystem;Trusted_Connection=True");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Database=PointOfSaleSystem;Trusted_Connection=True");
+        //}
     }
 }

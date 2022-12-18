@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {}
+    "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {
+    "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
+        "projectUniqueName": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
         "projectName": "Point_of_Sale_Lab3",
-        "projectPath": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
-        "packagesPath": "C:\\Users\\mikry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\obj\\",
+        "projectPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
+        "packagesPath": "C:\\Users\\tadas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mikry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tadas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,6 +63,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
             }
           },
           "imports": [
@@ -67,17 +79,19 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

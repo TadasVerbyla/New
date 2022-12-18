@@ -8,9 +8,9 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class Checkout
     {
-        public int customerId { get; set; }
-        public int employeeId { get; set; }
-        public int id { get; set; }
+        public Guid customerId { get; set; }
+        public Guid employeeId { get; set; }
+        public Guid id { get; set; }
         public string paymentMethod {get; set;}
         public double serviceFee { get; set; }
         public double tip { get; set; }
