@@ -27,14 +27,20 @@ namespace Point_of_Sale_Lab3.ModelData.CheckoutData
 
         public Checkout EditCheckout(Checkout checkout)
         {
-            context.Checkouts.Update(checkout);
+            var existing = context.Checkouts.Find(checkout.id);
+            existing.employeeId = checkout.employeeId;
+            existing.paymentMethod = checkout.paymentMethod;
+            existing.customerId = checkout.customerId;
+            existing.paymentMethod = checkout.paymentMethod;
+            existing.tip = checkout.tip;
+            existing.totalAmount = checkout.totalAmount;
+            context.Checkouts.Update(existing);
             context.SaveChanges();
             return checkout;
         }
 
         public Checkout GetCheckout(Guid id)
         {
-            //FIX ME
             return context.Checkouts.Find(id);
         }
 

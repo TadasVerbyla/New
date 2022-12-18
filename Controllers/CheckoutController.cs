@@ -55,12 +55,11 @@ namespace Point_of_Sale_Lab3.Controllers
             return NotFound();
         }
 
-        //FIX ME
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
         public IActionResult EditCheckout(Guid id, Checkout checkout)
         {
-            var checkoutCheck = checkoutData.GetCheckout(id);
+            Checkout checkoutCheck = checkoutData.GetCheckout(id);
             if (checkout != null)
             {
                 checkout.id = checkoutCheck.id;
