@@ -24,15 +24,17 @@ namespace PointofSaleLab3.Migrations
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Checkout", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("customerId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<Guid>("employeeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("customerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("employeeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("paymentMethod")
                         .IsRequired()
@@ -49,17 +51,19 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Checkouts");
+                    b.ToTable("Checkouts", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Complaint", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("orderId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("text")
                         .IsRequired()
@@ -67,20 +71,22 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Complaints");
+                    b.ToTable("Complaints", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Employee", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime>("birthdate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("businessId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("businessId")
+                        .HasColumnType("int");
 
                     b.Property<string>("firstName")
                         .IsRequired()
@@ -103,14 +109,19 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Employees");
+                    b.HasIndex("shiftId")
+                        .IsUnique();
+
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Order", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("comments")
                         .IsRequired()
@@ -120,8 +131,8 @@ namespace PointofSaleLab3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("discountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("discountId")
+                        .HasColumnType("int");
 
                     b.Property<double>("price")
                         .HasColumnType("float");
@@ -131,14 +142,16 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Permission", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("permission")
                         .IsRequired()
@@ -146,14 +159,16 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Permissions");
+                    b.ToTable("Permissions", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Review", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("comment")
                         .IsRequired()
@@ -164,17 +179,16 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Shift", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("employeeId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime>("endTime")
                         .HasColumnType("datetime2");
@@ -187,14 +201,16 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Shifts");
+                    b.ToTable("Shifts", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.Support", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("issue")
                         .IsRequired()
@@ -205,14 +221,16 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Support");
+                    b.ToTable("Support", (string)null);
                 });
 
             modelBuilder.Entity("Point_of_Sale_Lab3.Models.User", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime>("birthdate")
                         .HasColumnType("datetime2");
@@ -235,7 +253,22 @@ namespace PointofSaleLab3.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("Point_of_Sale_Lab3.Models.Employee", b =>
+                {
+                    b.HasOne("Point_of_Sale_Lab3.Models.Shift", null)
+                        .WithOne("Employee")
+                        .HasForeignKey("Point_of_Sale_Lab3.Models.Employee", "shiftId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Point_of_Sale_Lab3.Models.Shift", b =>
+                {
+                    b.Navigation("Employee")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
