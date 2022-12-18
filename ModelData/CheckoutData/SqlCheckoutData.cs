@@ -34,6 +34,7 @@ namespace Point_of_Sale_Lab3.ModelData.CheckoutData
 
         public Checkout GetCheckout(Guid id)
         {
+            //FIX ME
             return context.Checkouts.Find(id);
         }
 
