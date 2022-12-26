@@ -156,3 +156,8 @@ C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\scopedcss\bundle\Point_of_Sale_Lab3.styles.css
 C:\Users\tadas\Desktop\Team-SHIFT\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets\msbuild.Point_of_Sale_Lab3.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets\msbuild.build.Point_of_Sale_Lab3.props
+C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Point_of_Sale_Lab3.props
+C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Point_of_Sale_Lab3.props
+C:\Users\tadas\Desktop\Team-SHIFT\obj\Debug\net6.0\staticwebassets.pack.json

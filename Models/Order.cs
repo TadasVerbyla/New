@@ -8,13 +8,16 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class Order
     {
-        public string comments { get; set; }
-        public string delivery_address { get; set; }
-        public Guid discountId { get; set; }
         public Guid id { get; set; }
-        public double price { get; set; }
+        public Guid customerId { get; set; }
+        public Guid businessId { get; set; }
         public OrderStatus status { get; set; }
-
+        public double price { get; set; }
+        public DateTime createdOn { get; set; }
+        public DateTime completedOn { get; set; }
+        public string comments { get; set; }
+        public Guid discountId { get; set; }
+        public string deliveryAddress { get; set; }
     }
 }
 

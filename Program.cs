@@ -1,5 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
-using Point_of_Sale_Lab3.ModelData.CheckoutData;
+using Point_of_Sale_Lab3.ModelData.PaymentData;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 //builder.Services.AddSingleton<ICheckoutData, MockCheckoutData>();
 builder.Services.AddDbContextPool<PointOfSaleContext>(options => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Database=PointOfSaleSystem;Trusted_Connection=True"));
-builder.Services.AddScoped<ICheckoutData, SqlCheckoutData>();
+builder.Services.AddScoped<IPaymentData, SqlPaymentData>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

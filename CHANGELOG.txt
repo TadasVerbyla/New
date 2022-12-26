@@ -1,0 +1,34 @@
+We have redefined the used datamodel. The .yaml specified these entities:
+
+Checkout
+	Renamed to Payment, entity from lab1
+	Added missing lab1 fields
+
+Complaint
+	Deleted because it is connected to nothing and not in lab1
+Employee
+Order
+	Updated from .yaml with many of the missing fields from lab1
+
+Permission
+Review
+	Deleted because it is connected to nothing and not in lab1
+Shift
+	Specified EmployeeId was removed
+	
+Support
+	Renamed to SupportRequest, added fields misssed from lab1
+User
+	Renamed to Customer
+	Added username field that was missing in both lab1 and lab2
+
+Created new entities
+Business
+	Was specified by lab1 but left unimplemented
+	Created based on lab1 but without unecessary fields
+OrderItem
+	Same as in lab1
+Item
+	Same as in lab1
+EmployeePermission
+	Same as lab1 Permission Management

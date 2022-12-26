@@ -14,15 +14,18 @@ namespace Point_of_Sale_Lab3.DB
         {
 
         }
-        public DbSet<Checkout> Checkouts { get; set; }
-        public DbSet<Complaint> Complaints { get; set; }
+        public DbSet<Business> Businesses { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeePermission> EmployeesPermission { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Permission> Permissions { get; set; }
-        public DbSet<Review> Reviews { get; set; }
         public DbSet<Shift> Shifts { get; set; }
-        public DbSet<Support> Support { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<SupportRequest> SupportRequests { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
