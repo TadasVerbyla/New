@@ -25,12 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModelData\ComplaintData\" />
+    <Folder Include="ModelData\BusinessData\" />
+    <Folder Include="ModelData\CustomerData\" />
+    <Folder Include="ModelData\DiscountData\" />
     <Folder Include="ModelData\EmployeeData\" />
-    <Folder Include="ModelData\UserData\" />
-    <Folder Include="ModelData\SupportData\" />
+    <Folder Include="ModelData\EmployeePermissionData\" />
+    <Folder Include="ModelData\ItemData\" />
+    <Folder Include="ModelData\OrderItemData\" />
+    <Folder Include="ModelData\SupportRequestData\" />
     <Folder Include="ModelData\ShiftData\" />
-    <Folder Include="ModelData\ReviewData\" />
     <Folder Include="ModelData\PermissionData\" />
     <Folder Include="ModelData\OrderData\" />
   </ItemGroup>
