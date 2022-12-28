@@ -5,51 +5,51 @@ using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.Controllers
 {
-    [Route("pos/[controller]")]
+    [Route("PoS/[controller]")]
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        private IPaymentData checkoutData;
-        public PaymentController(IPaymentData _checkoutData)
+        private IPaymentData paymentData;
+        public PaymentController(IPaymentData _paymentData)
         {
-            checkoutData = _checkoutData;
+            paymentData = _paymentData;
         }
 
         [HttpGet]
         [Route("PoS/[controller]")]
-        public IActionResult GetCheckouts()
+        public IActionResult GetPayments()
         {
-            return Ok(checkoutData.GetPayments());
+            return Ok(paymentData.GetPayments());
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult GetCheckout(Guid id)
+        public IActionResult GetPayment(Guid id)
         {
-            var checkout = checkoutData.GetPayment(id);
-            if (checkout == null)
+            var payment = paymentData.GetPayment(id);
+            if (payment == null)
             {
                 return NotFound();
             }
-            return Ok(checkoutData.GetPayment(id));
+            return Ok(paymentData.GetPayment(id));
         }
 
         [HttpPost]
         [Route("PoS/[controller]")] 
-        public IActionResult AddCheckout(Payment checkout)
+        public IActionResult AddPayment(Payment payment)
         {
-            checkoutData.AddPayment(checkout);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + checkout.id, checkout);
+            paymentData.AddPayment(payment);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + payment.id, payment);
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult DeleteCheckout(Guid id)
+        public IActionResult DeletePayment(Guid id)
         {
-            var checkoutCheck = checkoutData.GetPayment(id);
-            if (checkoutCheck != null)
+            var paymentCheck = paymentData.GetPayment(id);
+            if (paymentCheck != null)
             {
-                checkoutData.DeletePayment(id);
+                paymentData.DeletePayment(id);
                 return Ok();
             }
             return NotFound();
@@ -57,14 +57,14 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditCheckout(Guid id, Payment checkout)
+        public IActionResult EditPayment(Guid id, Payment payment)
         {
-            Payment checkoutCheck = checkoutData.GetPayment(id);
-            if (checkout != null)
+            Payment paymentCheck = paymentData.GetPayment(id);
+            if (payment != null)
             {
-                checkout.id = checkoutCheck.id;
-                checkoutData.EditPayment(checkout);
-                return Ok(checkout);
+                payment.id = paymentCheck.id;
+                paymentData.EditPayment(payment);
+                return Ok(payment);
             }
             return NotFound();
         }
