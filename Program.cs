@@ -9,6 +9,7 @@ using Point_of_Sale_Lab3.ModelData.ItemData;
 using Point_of_Sale_Lab3.ModelData.OrderData;
 using Point_of_Sale_Lab3.ModelData.PermissionData;
 using Point_of_Sale_Lab3.ModelData.ShiftData;
+using Point_of_Sale_Lab3.ModelData.SupportRequestData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ builder.Services.AddScoped<IOrderData, SqlOrderData>();
 builder.Services.AddScoped<IPaymentData, SqlPaymentData>();
 builder.Services.AddScoped<IPermissionData, SqlPermissionData>();
 builder.Services.AddScoped<IShiftData, SqlShiftData>();
+builder.Services.AddScoped<ISupportRequestData, SqlSupportRequestData>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
