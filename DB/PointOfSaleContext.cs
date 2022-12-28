@@ -19,7 +19,7 @@ namespace Point_of_Sale_Lab3.DB
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<EmployeePermission> EmployeesPermission { get; set; }
+        public DbSet<EmployeePermission> EmployeePermissions { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
