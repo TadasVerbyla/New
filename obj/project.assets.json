@@ -3760,6 +3760,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 7.0.1",
+      "Microsoft.EntityFrameworkCore.Analyzers >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.1",
@@ -3768,19 +3769,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tadas\\.nuget\\packages\\": {}
+    "C:\\Users\\mikry\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
+      "projectUniqueName": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
       "projectName": "Point_of_Sale_Lab3",
-      "projectPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
-      "packagesPath": "C:\\Users\\tadas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\obj\\",
+      "projectPath": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
+      "packagesPath": "C:\\Users\\mikry\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tadas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mikry\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3807,6 +3808,10 @@
         "targetAlias": "net6.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Analyzers": {
             "target": "Package",
             "version": "[7.0.1, )"
           },
