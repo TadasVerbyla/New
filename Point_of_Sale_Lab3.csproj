@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModelData\EmployeeData\" />
     <Folder Include="ModelData\EmployeePermissionData\" />
     <Folder Include="ModelData\ItemData\" />
     <Folder Include="ModelData\OrderItemData\" />
