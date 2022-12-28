@@ -2,6 +2,7 @@
 using Point_of_Sale_Lab3.ModelData.PaymentData;
 using Microsoft.EntityFrameworkCore;
 using Point_of_Sale_Lab3.ModelData.BusinessData;
+using Point_of_Sale_Lab3.ModelData.CustomerData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddDbContextPool<PointOfSaleContext>
 
 //Services to add
 builder.Services.AddScoped<IBusinessData, SqlBusinessData>();
+builder.Services.AddScoped<ICustomerData, SqlCustomerData>();
 builder.Services.AddScoped<IPaymentData, SqlPaymentData>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
