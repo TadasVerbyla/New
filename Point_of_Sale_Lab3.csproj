@@ -27,7 +27,6 @@
   <ItemGroup>
     <Folder Include="ModelData\SupportRequestData\" />
     <Folder Include="ModelData\ShiftData\" />
-    <Folder Include="ModelData\PermissionData\" />
   </ItemGroup>
 
 </Project>
