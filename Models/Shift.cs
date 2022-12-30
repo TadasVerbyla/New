@@ -12,5 +12,6 @@ namespace Point_of_Sale_Lab3.Models
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public int workdays { get; set; }
+
     }
 }
