@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {}
+    "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {
+    "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
+        "projectUniqueName": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
         "projectName": "Point_of_Sale_Lab3",
-        "projectPath": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
-        "packagesPath": "C:\\Users\\mikry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mikry\\source\\repos\\Team-SHIFT\\obj\\",
+        "projectPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
+        "packagesPath": "C:\\Users\\tadas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mikry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tadas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
