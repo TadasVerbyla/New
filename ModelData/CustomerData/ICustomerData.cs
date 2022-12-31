@@ -6,8 +6,8 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
     {
         List<Customer> GetCustomers();
         Customer GetCustomer(Guid id);
-        Customer AddCustomer(Customer customer);
+        Customer AddCustomer(CustomerDTO customer);
         void DeleteCustomer(Guid id);
-        Customer EditCustomer(Customer customer);
+        Customer EditCustomer(Guid id, CustomerDTO customer);
     }
 }

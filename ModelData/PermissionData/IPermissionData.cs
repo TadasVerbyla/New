@@ -6,8 +6,8 @@ namespace Point_of_Sale_Lab3.ModelData.PermissionData
     {
         List<Permission> GetPermissions();
         Permission GetPermission(Guid id);
-        Permission AddPermission(Permission permission);
+        Permission AddPermission(PermissionDTO permission);
         void DeletePermission(Guid id);
-        Permission EditPermission(Permission permission);
+        Permission EditPermission(Guid id, PermissionDTO permission);
     }
 }

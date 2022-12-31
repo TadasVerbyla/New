@@ -8,6 +8,6 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
         Order GetOrder(Guid id);
         Order AddOrder(OrderDTO order);
         void DeleteOrder(Guid id);
-        Order EditOrder(Order order);
+        Order EditOrder(Guid id, OrderDTO order);
     }
 }

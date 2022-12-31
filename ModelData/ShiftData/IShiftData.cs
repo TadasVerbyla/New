@@ -6,8 +6,8 @@ namespace Point_of_Sale_Lab3.ModelData.ShiftData
     {
         List<Shift> GetShifts();
         Shift GetShift(Guid id);
-        Shift AddShift(Shift shift);
+        Shift AddShift(ShiftDTO shift);
         void DeleteShift(Guid id);
-        Shift EditShift(Shift shift);
+        Shift EditShift(Guid id, ShiftDTO shift);
     }
 }
