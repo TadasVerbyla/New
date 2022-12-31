@@ -38,8 +38,8 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult AddOrder(OrderDTO order)
         {
-            var created = orderData.AddOrder(order);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + created.id, order);
+            var createdOrder = orderData.AddOrder(order);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdOrder.id, order);
         }
 
         [HttpDelete]

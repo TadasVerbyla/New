@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddShift(Shift shift)
+        public IActionResult AddShift(ShiftDTO shift)
         {
-            shiftData.AddShift(shift);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + shift.id, shift);
+            var createdShift = shiftData.AddShift(shift);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdShift.id, shift);
         }
 
         [HttpDelete]

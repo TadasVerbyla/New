@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddDiscount(Discount discount)
+        public IActionResult AddDiscount(DiscountDTO discount)
         {
-            discountData.AddDiscount(discount);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + discount.id, discount);
+            var createdDiscount = discountData.AddDiscount(discount);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdDiscount.id, discount);
         }
 
         [HttpDelete]

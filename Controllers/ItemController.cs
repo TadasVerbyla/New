@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddItem(Item item)
+        public IActionResult AddItem(ItemDTO item)
         {
-            itemData.AddItem(item);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + item.id, item);
+            var createdItem = itemData.AddItem(item);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdItem.id, item);
         }
 
         [HttpDelete]

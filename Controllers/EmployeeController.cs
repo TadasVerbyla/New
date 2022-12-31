@@ -37,10 +37,9 @@ namespace Point_of_Sale_Lab3.Controllers
         [HttpPost]
         [Route("PoS/[controller]")]
         public IActionResult AddEmployee(EmployeeDTO employee)
-        {
-            
-            var created = employeeData.AddEmployee(employee);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + created.id, employee);
+        { 
+            var createdEmployee = employeeData.AddEmployee(employee);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdEmployee.id, employee);
         }
 
         [HttpDelete]
@@ -58,7 +57,7 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditEmployee(Guid id, Employee employee)
+        public IActionResult EditEmployee(Guid id, EmployeeDTO employee)
         {
             Employee employeeCheck = employeeData.GetEmployee(id);
             if (employee != null)

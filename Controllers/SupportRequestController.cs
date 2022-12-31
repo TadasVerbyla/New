@@ -40,10 +40,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddSupportRequest(SupportRequest supportRequest)
+        public IActionResult AddSupportRequest(SupportRequestDTO supportRequest)
         {
-            supportRequestData.AddSupportRequest(supportRequest);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + supportRequest.id, supportRequest);
+            var createdSupportRequest = supportRequestData.AddSupportRequest(supportRequest);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdSupportRequest.id, supportRequest);
         }
 
         [HttpDelete]

@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")] 
-        public IActionResult AddPayment(Payment payment)
+        public IActionResult AddPayment(PaymentDTO payment)
         {
-            paymentData.AddPayment(payment);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + payment.id, payment);
+            var createdPayment = paymentData.AddPayment(payment);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdPayment.id, payment);
         }
 
         [HttpDelete]

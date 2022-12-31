@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddPermission(Permission permission)
+        public IActionResult AddPermission(PermissionDTO permission)
         {
-            permissionData.AddPermission(permission);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + permission.id, permission);
+            var createdPermission = permissionData.AddPermission(permission);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdPermission.id, permission);
         }
 
         [HttpDelete]

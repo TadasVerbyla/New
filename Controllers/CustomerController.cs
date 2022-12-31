@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddCustomer(Customer customer)
+        public IActionResult AddCustomer(CustomerDTO customer)
         {
-            customerData.AddCustomer(customer);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + customer.id, customer);
+            var createdCustomer = customerData.AddCustomer(customer);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdCustomer.id, customer);
         }
 
         [HttpDelete]

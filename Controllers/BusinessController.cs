@@ -36,10 +36,10 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddBusiness(Business business)
+        public IActionResult AddBusiness(BusinessDTO business)
         {
-            businessData.AddBusiness(business);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + business.id, business);
+             var createdBusiness = businessData.AddBusiness(business);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdBusiness.id, business);
         }
 
         [HttpDelete]
