@@ -14,7 +14,6 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
         public Order AddOrder(OrderDTO order)
         {
             Order _order = new Order();
-            _order.id = order.id;
             _order.customerId = order.customerId;
             _order.businessId = order.businessId;
             _order.discountId = order.discountId;
@@ -24,6 +23,7 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             _order.completedOn = order.completedOn;
             _order.comments = order.comments;
             _order.deliveryAddress = order.deliveryAddress;
+            _order.id = Guid.NewGuid();
             context.Orders.Add(_order);
             context.SaveChanges();
             return _order;
@@ -49,7 +49,7 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             existing.deliveryAddress = order.deliveryAddress;
             context.Orders.Update(existing);
             context.SaveChanges();
-            return order;
+            return existing;
         }
 
         public Order GetOrder(Guid id)

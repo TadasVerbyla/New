@@ -11,12 +11,22 @@ namespace Point_of_Sale_Lab3.ModelData.SupportRequestData
             context = _context;
         }
 
-        public SupportRequest AddSupportRequest(SupportRequest supportRequest)
+        public SupportRequest AddSupportRequest(SupportRequestDTO supportRequest)
         {
-            supportRequest.id = Guid.NewGuid();
-            context.SupportRequests.Add(supportRequest);
+            SupportRequest _supportRequest = new SupportRequest();
+            _supportRequest.businessId = supportRequest.businessId;
+            _supportRequest.customerId = supportRequest.customerId;
+            _supportRequest.employeeId = supportRequest.employeeId;
+            _supportRequest.issue = supportRequest.issue;
+            _supportRequest.orderId = supportRequest.orderId;
+            _supportRequest.requestedOn = supportRequest.requestedOn;
+            _supportRequest.solvedOn = supportRequest.solvedOn;
+            _supportRequest.status = supportRequest.status;
+            _supportRequest.type = supportRequest.type;
+            _supportRequest.id = Guid.NewGuid();
+            context.SupportRequests.Add(_supportRequest);
             context.SaveChanges();
-            return supportRequest;
+            return _supportRequest;
         }
 
         public void DeleteSupportRequest(Guid id)
@@ -39,7 +49,7 @@ namespace Point_of_Sale_Lab3.ModelData.SupportRequestData
             existing.solvedOn = supportRequest.solvedOn;
             context.SupportRequests.Update(existing);
             context.SaveChanges();
-            return supportRequest;
+            return existing;
         }
 
         public SupportRequest GetSupportRequest(Guid id)

@@ -11,12 +11,21 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
             context = _context;
         }
 
-        public Payment AddPayment(Payment payment)
+        public Payment AddPayment(PaymentDTO payment)
         {
-            payment.id = Guid.NewGuid();
-            context.Payments.Add(payment);
+            Payment _payment = new Payment();
+            _payment.customerId = payment.customerId;
+            _payment.employeeId = payment.employeeId;
+            _payment.orderId = payment.orderId;
+            _payment.payedOn = payment.payedOn;
+            _payment.paymentMethod = payment.paymentMethod;
+            _payment.serviceFee = payment.serviceFee;
+            _payment.tip = payment.tip;
+            _payment.totalAmount = payment.totalAmount;
+            _payment.id = Guid.NewGuid();
+            context.Payments.Add(_payment);
             context.SaveChanges();
-            return payment;
+            return _payment;
         }
 
         public void DeletePayment(Guid id)
@@ -36,7 +45,7 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
             existing.totalAmount = payment.totalAmount;
             context.Payments.Update(existing);
             context.SaveChanges();
-            return payment;
+            return existing;
         }
 
         public Payment GetPayment(Guid id)

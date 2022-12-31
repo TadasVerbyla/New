@@ -18,10 +18,19 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
             }
         };
 
-        public Payment AddPayment(Payment payment)
+        public Payment AddPayment(PaymentDTO payment)
         {
-            payment.id = Guid.NewGuid();
-            payments.Add(payment);
+            Payment _payment = new Payment();
+            _payment.customerId = payment.customerId;
+            _payment.employeeId = payment.employeeId;
+            _payment.orderId = payment.orderId;
+            _payment.payedOn = payment.payedOn;
+            _payment.paymentMethod = payment.paymentMethod;
+            _payment.serviceFee = payment.serviceFee;
+            _payment.tip = payment.tip;
+            _payment.totalAmount = payment.totalAmount;
+            _payment.id = Guid.NewGuid();
+            payments.Add(_payment);
             return payment;
         }
 

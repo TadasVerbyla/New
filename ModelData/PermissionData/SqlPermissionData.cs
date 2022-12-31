@@ -11,12 +11,14 @@ namespace Point_of_Sale_Lab3.ModelData.PermissionData
             context = _context;
         }
 
-        public Permission AddPermission(Permission permission)
+        public Permission AddPermission(PermissionDTO permission)
         {
-            permission.id = Guid.NewGuid();
-            context.Permissions.Add(permission);
+            Permission _permission = new Permission();
+            _permission.name = permission.name;
+            _permission.id = Guid.NewGuid();
+            context.Permissions.Add(_permission);
             context.SaveChanges();
-            return permission;
+            return _permission;
         }
 
         public void DeletePermission(Guid id)

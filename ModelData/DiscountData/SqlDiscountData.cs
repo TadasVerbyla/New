@@ -11,12 +11,20 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
             context = _context;
         }
 
-        public Discount AddDiscount(Discount discount)
+        public Discount AddDiscount(DiscountDTO discount)
         {
-            discount.id = Guid.NewGuid();
-            context.Discounts.Add(discount);
+            Discount _discount = new Discount();
+            _discount.amount = discount.amount;
+            _discount.code = discount.code;
+            _discount.discount = discount.discount;
+            _discount.name = discount.name;
+            _discount.percentage = discount.percentage;
+            _discount.validFrom = discount.validFrom;
+            _discount.validTo = discount.validTo;
+            _discount.id = Guid.NewGuid();
+            context.Discounts.Add(_discount);
             context.SaveChanges();
-            return discount;
+            return _discount;
         }
 
         public void DeleteDiscount(Guid id)
@@ -37,7 +45,7 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
             existing.validTo = discount.validTo;
             context.Discounts.Update(existing);
             context.SaveChanges();
-            return discount;
+            return existing;
         }
 
         public Discount GetDiscount(Guid id)

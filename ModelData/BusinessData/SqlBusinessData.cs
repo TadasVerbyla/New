@@ -11,12 +11,19 @@ namespace Point_of_Sale_Lab3.ModelData.BusinessData
             context = _context;
         }
 
-        public Business AddBusiness(Business business)
+        public Business AddBusiness(BusinessDTO business)
         {
-            business.id = Guid.NewGuid();
-            context.Businesses.Add(business);
+            Business _business = new Business();
+            _business.accountNumber = business.accountNumber;
+            _business.address = business.address;
+            _business.closing = business.closing;
+            _business.name = business.name;
+            _business.opening = business.opening;
+            _business.websiteLink = business.websiteLink;
+            _business.id = Guid.NewGuid();
+            context.Businesses.Add(_business);
             context.SaveChanges();
-            return business;
+            return _business;
         }
 
         public void DeleteBusiness(Guid id)
@@ -36,7 +43,7 @@ namespace Point_of_Sale_Lab3.ModelData.BusinessData
             existing.accountNumber = business.accountNumber;
             context.Businesses.Update(existing);
             context.SaveChanges();
-            return business;
+            return existing;
         }
 
         public Business GetBusiness(Guid id)
