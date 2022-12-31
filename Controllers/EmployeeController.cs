@@ -36,7 +36,7 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddEmployee(Employee employee)
+        public IActionResult AddEmployee(EmployeeDTO employee)
         {
             employeeData.AddEmployee(employee);
             return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + employee.id, employee);

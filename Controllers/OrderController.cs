@@ -36,7 +36,7 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddOrder(Order order)
+        public IActionResult AddOrder(OrderDTO order)
         {
             orderData.AddOrder(order);
             return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + order.id, order);

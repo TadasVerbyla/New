@@ -11,12 +11,13 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             context = _context;
         }
 
-        public Employee AddEmployee(Employee employee)
+        public Employee AddEmployee(EmployeeDTO employee)
         {
-            employee.id = Guid.NewGuid();
-            context.Employees.Add(employee);
+            Employee _employee = new Employee();
+            _employee.id = employee.id;
+            context.Employees.Add(_employee);
             context.SaveChanges();
-            return employee;
+            return _employee;
         }
 
         public void DeleteEmployee(Guid id)

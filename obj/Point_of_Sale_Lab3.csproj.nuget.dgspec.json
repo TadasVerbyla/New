@@ -10,11 +10,11 @@
         "projectUniqueName": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
         "projectName": "Point_of_Sale_Lab3",
         "projectPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\Point_of_Sale_Lab3.csproj",
-        "packagesPath": "C:\\Users\\tadas\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Work\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\tadas\\Desktop\\Team-SHIFT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tadas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Work\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

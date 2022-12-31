@@ -6,7 +6,7 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
     {
         List<Employee> GetEmployees();
         Employee GetEmployee(Guid id);
-        Employee AddEmployee(Employee employee);
+        Employee AddEmployee(EmployeeDTO employee);
         void DeleteEmployee(Guid id);
         Employee EditEmployee(Employee employee);
     }

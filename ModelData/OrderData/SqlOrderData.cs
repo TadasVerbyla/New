@@ -11,12 +11,22 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             context = _context;
         }
 
-        public Order AddOrder(Order order)
+        public Order AddOrder(OrderDTO order)
         {
-            order.id = Guid.NewGuid();
-            context.Orders.Add(order);
+            Order _order = new Order();
+            _order.id = order.id;
+            _order.customerId = order.customerId;
+            _order.businessId = order.businessId;
+            _order.discountId = order.discountId;
+            _order.status = order.status;
+            _order.price = order.price;
+            _order.createdOn = order.createdOn;
+            _order.completedOn = order.completedOn;
+            _order.comments = order.comments;
+            _order.deliveryAddress = order.deliveryAddress;
+            context.Orders.Add(_order);
             context.SaveChanges();
-            return order;
+            return _order;
         }
 
         public void DeleteOrder(Guid id)
