@@ -28,6 +28,10 @@ namespace Point_of_Sale_Lab3.Models
         public virtual Order order { get; set; }
 
         public Guid customerId { get; set; }
+        
+        [ForeignKey("customerId")]
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual Customer customer { get; set; }
         public string issue { get; set; }
         public SupportStatus status { get; set; }
         public SupportType type { get; set; }
