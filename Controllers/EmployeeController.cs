@@ -38,8 +38,9 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult AddEmployee(EmployeeDTO employee)
         {
-            employeeData.AddEmployee(employee);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + employee.id, employee);
+            
+            var created = employeeData.AddEmployee(employee);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + created.id, employee);
         }
 
         [HttpDelete]

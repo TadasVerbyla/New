@@ -9,16 +9,9 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class OrderDTO
     {
-        public Guid id { get; set; }
-
         public Guid customerId { get; set; }
         public Guid businessId { get; set; }
         public Guid discountId { get; set; }
-        //public List<Guid> itemIds { get; set; }
-
-        //[ForeignKey("itemIds")]
-        //public virtual List<Item> items { get; set; }
-
         public OrderStatus status { get; set; }
         public double price { get; set; }
         public DateTime createdOn { get; set; }

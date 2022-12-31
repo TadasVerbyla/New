@@ -14,7 +14,13 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
         public Employee AddEmployee(EmployeeDTO employee)
         {
             Employee _employee = new Employee();
-            _employee.id = employee.id;
+            _employee.businessId = employee.businessId;
+            _employee.firstName= employee.firstName;
+            _employee.lastName= employee.lastName;
+            _employee.birthdate= employee.birthdate;
+            _employee.username= employee.username;
+            _employee.password= employee.password;
+            _employee.shiftId= employee.shiftId;
             context.Employees.Add(_employee);
             context.SaveChanges();
             return _employee;

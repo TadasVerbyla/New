@@ -9,7 +9,6 @@ namespace Point_of_Sale_Lab3.Models
 {
     public class EmployeeDTO
     {
-        public Guid id { get; set; }
         public Guid businessId { get; set; }
         public Guid shiftId { get; set; }
         public string firstName { get; set; }
