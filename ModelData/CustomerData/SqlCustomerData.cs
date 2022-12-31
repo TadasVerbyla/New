@@ -32,9 +32,9 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
             context.SaveChanges();
         }
 
-        public Customer EditCustomer(Customer customer)
+        public Customer EditCustomer(Guid id, CustomerDTO customer)
         {
-            var existing = context.Customers.Find(customer.id);
+            var existing = context.Customers.Find(id);
             existing.firstName = customer.firstName;
             existing.lastName = customer.lastName;
             existing.birthdate = customer.birthdate;

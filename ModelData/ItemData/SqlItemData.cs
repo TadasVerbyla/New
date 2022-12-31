@@ -32,9 +32,9 @@ namespace Point_of_Sale_Lab3.ModelData.ItemData
             context.SaveChanges();
         }
 
-        public Item EditItem(Item item)
+        public Item EditItem(Guid id, ItemDTO item)
         {
-            var existing = context.Items.Find(item.id);
+            var existing = context.Items.Find(id);
             existing.name = item.name;
             existing.price = item.price;
             existing.taxablePercent = item.taxablePercent;

@@ -34,9 +34,9 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
             context.SaveChanges();
         }
 
-        public Payment EditPayment(Payment payment)
+        public Payment EditPayment(Guid id, PaymentDTO payment)
         {
-            var existing = context.Payments.Find(payment.id);
+            var existing = context.Payments.Find(id);
             existing.employeeId = payment.employeeId;
             existing.paymentMethod = payment.paymentMethod;
             existing.customerId = payment.customerId;

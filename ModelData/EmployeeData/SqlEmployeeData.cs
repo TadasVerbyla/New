@@ -32,9 +32,9 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             context.SaveChanges();
         }
 
-        public Employee EditEmployee(Employee employee)
+        public Employee EditEmployee(Guid id, EmployeeDTO employee)
         {
-            var existing = context.Employees.Find(employee.id);
+            var existing = context.Employees.Find(id);
             existing.businessId = employee.businessId;
             existing.firstName = employee.firstName;
             existing.lastName = employee.lastName;

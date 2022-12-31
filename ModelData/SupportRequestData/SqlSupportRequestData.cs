@@ -35,9 +35,9 @@ namespace Point_of_Sale_Lab3.ModelData.SupportRequestData
             context.SaveChanges();
         }
 
-        public SupportRequest EditSupportRequest(SupportRequest supportRequest)
+        public SupportRequest EditSupportRequest(Guid id, SupportRequestDTO supportRequest)
         {
-            var existing = context.SupportRequests.Find(supportRequest.id);
+            var existing = context.SupportRequests.Find(id);
             existing.employeeId = supportRequest.employeeId;
             existing.businessId = supportRequest.businessId;
             existing.orderId = supportRequest.orderId;

@@ -33,9 +33,9 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
             context.SaveChanges();
         }
 
-        public Discount EditDiscount(Discount discount)
+        public Discount EditDiscount(Guid id, DiscountDTO discount)
         {
-            var existing = context.Discounts.Find(discount.id);
+            var existing = context.Discounts.Find(id);
             existing.name = discount.name;
             existing.amount = discount.amount;
             existing.percentage = discount.percentage;

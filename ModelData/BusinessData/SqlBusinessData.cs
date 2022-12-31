@@ -32,9 +32,9 @@ namespace Point_of_Sale_Lab3.ModelData.BusinessData
             context.SaveChanges();
         }
 
-        public Business EditBusiness(Business business)
+        public Business EditBusiness(Guid id, BusinessDTO business)
         {
-            var existing = context.Businesses.Find(business.id);
+            var existing = context.Businesses.Find(id);
             existing.name = business.name;
             existing.address = business.address;
             existing.opening = business.opening;

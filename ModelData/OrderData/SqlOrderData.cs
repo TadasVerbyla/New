@@ -35,9 +35,9 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             context.SaveChanges();
         }
 
-        public Order EditOrder(Order order)
+        public Order EditOrder(Guid id, OrderDTO order)
         {
-            var existing = context.Orders.Find(order.id);
+            var existing = context.Orders.Find(id);
             existing.customerId = order.customerId;
             existing.businessId = order.businessId;
             existing.status = order.status;

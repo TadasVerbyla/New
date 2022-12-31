@@ -29,9 +29,9 @@ namespace Point_of_Sale_Lab3.ModelData.ShiftData
             context.SaveChanges();
         }
 
-        public Shift EditShift(Shift shift)
+        public Shift EditShift(Guid id, ShiftDTO shift)
         {
-            var existing = context.Shifts.Find(shift.id);
+            var existing = context.Shifts.Find(id);
             existing.startTime = shift.startTime;
             existing.endTime = shift.endTime;
             existing.workdays = shift.workdays;

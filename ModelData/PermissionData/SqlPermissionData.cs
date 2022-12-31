@@ -27,9 +27,9 @@ namespace Point_of_Sale_Lab3.ModelData.PermissionData
             context.SaveChanges();
         }
 
-        public Permission EditPermission(Permission permission)
+        public Permission EditPermission(Guid id, PermissionDTO permission)
         {
-            var existing = context.Permissions.Find(permission.id);
+            var existing = context.Permissions.Find(id);
             existing.name = permission.name;
             context.Permissions.Update(existing);
             context.SaveChanges();
