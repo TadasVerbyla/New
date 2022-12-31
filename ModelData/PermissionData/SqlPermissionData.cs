@@ -33,7 +33,7 @@ namespace Point_of_Sale_Lab3.ModelData.PermissionData
             existing.name = permission.name;
             context.Permissions.Update(existing);
             context.SaveChanges();
-            return permission;
+            return existing;
         }
 
         public Permission GetPermission(Guid id)

@@ -44,7 +44,7 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             existing.shiftId = employee.shiftId;
             context.Employees.Update(existing);
             context.SaveChanges();
-            return employee;
+            return existing;
         }
 
         public Employee GetEmployee(Guid id)
