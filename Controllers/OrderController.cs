@@ -57,13 +57,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditOrder(Guid id, Order order)
+        public IActionResult EditOrder(Guid id, OrderDTO order)
         {
             Order orderCheck = orderData.GetOrder(id);
             if (order != null)
             {
-                order.id = orderCheck.id;
-                orderData.EditOrder(order);
+                orderData.EditOrder(orderCheck.id, order);
                 return Ok(order);
             }
             return NotFound();

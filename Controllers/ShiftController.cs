@@ -57,13 +57,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditShift(Guid id, Shift shift)
+        public IActionResult EditShift(Guid id, ShiftDTO shift)
         {
             Shift shiftCheck = shiftData.GetShift(id);
             if (shift != null)
             {
-                shift.id = shiftCheck.id;
-                shiftData.EditShift(shift);
+                shiftData.EditShift(shiftCheck.id, shift);
                 return Ok(shift);
             }
             return NotFound();

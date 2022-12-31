@@ -57,13 +57,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditCustomer(Guid id, Customer customer)
+        public IActionResult EditCustomer(Guid id, CustomerDTO customer)
         {
             Customer customerCheck = customerData.GetCustomer(id);
             if (customer != null)
             {
-                customer.id = customerCheck.id;
-                customerData.EditCustomer(customer);
+                customerData.EditCustomer(customerCheck.id, customer);
                 return Ok(customer);
             }
             return NotFound();

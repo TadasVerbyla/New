@@ -57,13 +57,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditDiscount(Guid id, Discount discount)
+        public IActionResult EditDiscount(Guid id, DiscountDTO discount)
         {
             Discount discountCheck = discountData.GetDiscount(id);
             if (discount != null)
             {
-                discount.id = discountCheck.id;
-                discountData.EditDiscount(discount);
+                discountData.EditDiscount(discountCheck.id, discount);
                 return Ok(discount);
             }
             return NotFound();

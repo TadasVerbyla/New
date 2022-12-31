@@ -57,13 +57,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditPermission(Guid id, Permission permission)
+        public IActionResult EditPermission(Guid id, PermissionDTO permission)
         {
             Permission permissionCheck = permissionData.GetPermission(id);
             if (permission != null)
             {
-                permission.id = permissionCheck.id;
-                permissionData.EditPermission(permission);
+                permissionData.EditPermission(permissionCheck.id, permission);
                 return Ok(permission);
             }
             return NotFound();

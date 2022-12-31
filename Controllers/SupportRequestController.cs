@@ -61,13 +61,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditSupportRequest(Guid id, SupportRequest supportRequest)
+        public IActionResult EditSupportRequest(Guid id, SupportRequestDTO supportRequest)
         {
             SupportRequest supportRequestCheck = supportRequestData.GetSupportRequest(id);
             if (supportRequest != null)
             {
-                supportRequest.id = supportRequestCheck.id;
-                supportRequestData.EditSupportRequest(supportRequest);
+                supportRequestData.EditSupportRequest(supportRequestCheck.id, supportRequest);
                 return Ok(supportRequest);
             }
             return NotFound();

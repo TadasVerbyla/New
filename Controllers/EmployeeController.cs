@@ -62,8 +62,7 @@ namespace Point_of_Sale_Lab3.Controllers
             Employee employeeCheck = employeeData.GetEmployee(id);
             if (employee != null)
             {
-                employee.id = employeeCheck.id;
-                employeeData.EditEmployee(employee);
+                employeeData.EditEmployee(employeeCheck.id, employee);
                 return Ok(employee);
             }
             return NotFound();

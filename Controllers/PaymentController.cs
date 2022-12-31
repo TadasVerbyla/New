@@ -57,13 +57,12 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditPayment(Guid id, Payment payment)
+        public IActionResult EditPayment(Guid id, PaymentDTO payment)
         {
             Payment paymentCheck = paymentData.GetPayment(id);
             if (payment != null)
             {
-                payment.id = paymentCheck.id;
-                paymentData.EditPayment(payment);
+                paymentData.EditPayment(paymentCheck.id, payment);
                 return Ok(payment);
             }
             return NotFound();
