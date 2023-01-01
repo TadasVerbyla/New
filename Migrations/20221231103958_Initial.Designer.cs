@@ -12,7 +12,7 @@ using Point_of_Sale_Lab3.DB;
 namespace PointofSaleLab3.Migrations
 {
     [DbContext(typeof(PointOfSaleContext))]
-    [Migration("20221230124600_Initial")]
+    [Migration("20221231103958_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

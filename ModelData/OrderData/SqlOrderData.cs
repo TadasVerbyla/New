@@ -11,12 +11,31 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             context = _context;
         }
 
-        public Order AddOrder(Order order)
+        public Order AddOrder(OrderDTO order)
         {
-            order.id = Guid.NewGuid();
-            context.Orders.Add(order);
+            Order _order = new Order();
+            _order.customerId = order.customerId;
+            _order.businessId = order.businessId;
+            _order.discountId = order.discountId;
+            _order.status = order.status;
+            _order.price = order.price;
+            _order.createdOn = order.createdOn;
+            _order.completedOn = order.completedOn;
+            _order.comments = order.comments;
+            _order.deliveryAddress = order.deliveryAddress;
+            _order.id = Guid.NewGuid();
+            _order.items = new List<Item>();
+            foreach (Guid itemId in order.itemIds)
+            {
+                Item i = context.Items.Find(itemId);
+                if (i != null)
+                {
+                    _order.items.Add(i);
+                }
+            }
+            context.Orders.Add(_order);
             context.SaveChanges();
-            return order;
+            return _order;
         }
 
         public void DeleteOrder(Guid id)
@@ -25,9 +44,9 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             context.SaveChanges();
         }
 
-        public Order EditOrder(Order order)
+        public Order EditOrder(Guid id, OrderDTO order)
         {
-            var existing = context.Orders.Find(order.id);
+            var existing = context.Orders.Find(id);
             existing.customerId = order.customerId;
             existing.businessId = order.businessId;
             existing.status = order.status;
@@ -37,9 +56,19 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             existing.comments = order.comments;
             existing.discountId = order.discountId;
             existing.deliveryAddress = order.deliveryAddress;
+            List<Item> items = new List<Item>();
+            foreach (Guid itemId in order.itemIds)
+            {
+                Item i = context.Items.Find(itemId);
+                if (i != null)
+                {
+                    items.Add(i);
+                }
+            }
+            existing.items = items;
             context.Orders.Update(existing);
             context.SaveChanges();
-            return order;
+            return existing;
         }
 
         public Order GetOrder(Guid id)

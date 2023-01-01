@@ -19,54 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetPayments()
         {
-            return Ok(paymentData.GetPayments());
+            try
+            {
+                return Ok(paymentData.GetPayments());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetPayment(Guid id)
         {
-            var payment = paymentData.GetPayment(id);
-            if (payment == null)
+            try
             {
-                return NotFound();
+                var payment = paymentData.GetPayment(id);
+                if (payment == null)
+                {
+                    return NotFound();
+                }
+                return Ok(paymentData.GetPayment(id));
             }
-            return Ok(paymentData.GetPayment(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")] 
-        public IActionResult AddPayment(Payment payment)
+        public IActionResult AddPayment(PaymentDTO payment)
         {
-            paymentData.AddPayment(payment);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + payment.id, payment);
+            try
+            {
+                var createdPayment = paymentData.AddPayment(payment);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdPayment.id, payment);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeletePayment(Guid id)
         {
-            var paymentCheck = paymentData.GetPayment(id);
-            if (paymentCheck != null)
+            try
             {
-                paymentData.DeletePayment(id);
-                return Ok();
+                var paymentCheck = paymentData.GetPayment(id);
+                if (paymentCheck != null)
+                {
+                    paymentData.DeletePayment(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditPayment(Guid id, Payment payment)
+        public IActionResult EditPayment(Guid id, PaymentDTO payment)
         {
-            Payment paymentCheck = paymentData.GetPayment(id);
-            if (payment != null)
+            try
             {
-                payment.id = paymentCheck.id;
-                paymentData.EditPayment(payment);
-                return Ok(payment);
+                Payment paymentCheck = paymentData.GetPayment(id);
+                if (payment != null)
+                {
+                    paymentData.EditPayment(paymentCheck.id, payment);
+                    return Ok(payment);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

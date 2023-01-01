@@ -19,54 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetBusinesses()
         {
-            return Ok(businessData.GetBusinesses());
+            try
+            {
+                return Ok(businessData.GetBusinesses());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetBusiness(Guid id)
         {
-            var business = businessData.GetBusiness(id);
-            if (business == null)
+            try
             {
-                return NotFound();
+                var business = businessData.GetBusiness(id);
+                if (business == null)
+                {
+                    return NotFound();
+                }
+                return Ok(businessData.GetBusiness(id));
             }
-            return Ok(businessData.GetBusiness(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddBusiness(Business business)
+        public IActionResult AddBusiness(BusinessDTO business)
         {
-            businessData.AddBusiness(business);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + business.id, business);
+            try
+            {
+                var createdBusiness = businessData.AddBusiness(business);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdBusiness.id, business);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteBusiness(Guid id)
         {
-            var businessCheck = businessData.GetBusiness(id);
-            if (businessCheck != null)
+            try
             {
-                businessData.DeleteBusiness(id);
-                return Ok();
+                var businessCheck = businessData.GetBusiness(id);
+                if (businessCheck != null)
+                {
+                    businessData.DeleteBusiness(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditBusiness(Guid id, Business business)
+        public IActionResult EditBusiness(Guid id, BusinessDTO business)
         {
-            Business businessCheck = businessData.GetBusiness(id);
-            if (business != null)
+            try
             {
-                business.id = businessCheck.id;
-                businessData.EditBusiness(business);
-                return Ok(business);
+                Business businessCheck = businessData.GetBusiness(id);
+                if (business != null)
+                {
+                    businessData.EditBusiness(businessCheck.id, business);
+                    return Ok(business);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

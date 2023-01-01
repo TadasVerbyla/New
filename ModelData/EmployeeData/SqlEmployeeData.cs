@@ -11,12 +11,29 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             context = _context;
         }
 
-        public Employee AddEmployee(Employee employee)
+        public Employee AddEmployee(EmployeeDTO employee)
         {
-            employee.id = Guid.NewGuid();
-            context.Employees.Add(employee);
+            Employee _employee = new Employee();
+            _employee.businessId = employee.businessId;
+            _employee.firstName= employee.firstName;
+            _employee.lastName= employee.lastName;
+            _employee.birthdate= employee.birthdate;
+            _employee.username= employee.username;
+            _employee.password= employee.password;
+            _employee.shiftId= employee.shiftId;
+            _employee.id = Guid.NewGuid();
+            _employee.permissions = new List<Permission>();
+            foreach(Guid permissionId in employee.permissionIds)
+            {
+                Permission p = context.Permissions.Find(permissionId);
+                if(p != null)
+                {
+                    _employee.permissions.Add(p);
+                }
+            }
+            context.Employees.Add(_employee);
             context.SaveChanges();
-            return employee;
+            return _employee;
         }
 
         public void DeleteEmployee(Guid id)
@@ -25,9 +42,9 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             context.SaveChanges();
         }
 
-        public Employee EditEmployee(Employee employee)
+        public Employee EditEmployee(Guid id, EmployeeDTO employee)
         {
-            var existing = context.Employees.Find(employee.id);
+            var existing = context.Employees.Find(id);
             existing.businessId = employee.businessId;
             existing.firstName = employee.firstName;
             existing.lastName = employee.lastName;
@@ -35,9 +52,19 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             existing.username = employee.username;
             existing.password = employee.password;
             existing.shiftId = employee.shiftId;
+            List<Permission> permissions = new List<Permission>();
+            foreach(Guid permissionId in employee.permissionIds)
+            {
+                Permission p = context.Permissions.Find(permissionId);
+                if(p != null)
+                {
+                    permissions.Add(p);
+                }
+            }
+            existing.permissions = permissions; 
             context.Employees.Update(existing);
             context.SaveChanges();
-            return employee;
+            return existing;
         }
 
         public Employee GetEmployee(Guid id)

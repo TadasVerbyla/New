@@ -6,8 +6,8 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
     {
         List<Order> GetOrders();
         Order GetOrder(Guid id);
-        Order AddOrder(Order order);
+        Order AddOrder(OrderDTO order);
         void DeleteOrder(Guid id);
-        Order EditOrder(Order order);
+        Order EditOrder(Guid id, OrderDTO order);
     }
 }

@@ -6,8 +6,8 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
     {
         List<Discount> GetDiscounts();
         Discount GetDiscount(Guid id);
-        Discount AddDiscount(Discount discount);
+        Discount AddDiscount(DiscountDTO discount);
         void DeleteDiscount(Guid id);
-        Discount EditDiscount(Discount discount);
+        Discount EditDiscount(Guid id, DiscountDTO discount);
     }
 }

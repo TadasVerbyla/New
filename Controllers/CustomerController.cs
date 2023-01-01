@@ -19,54 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetCustomers()
         {
-            return Ok(customerData.GetCustomers());
+            try
+            {
+                return Ok(customerData.GetCustomers());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetCustomer(Guid id)
         {
-            var customer = customerData.GetCustomer(id);
-            if (customer == null)
+            try
             {
-                return NotFound();
+                var customer = customerData.GetCustomer(id);
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+                return Ok(customerData.GetCustomer(id));
             }
-            return Ok(customerData.GetCustomer(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddCustomer(Customer customer)
+        public IActionResult AddCustomer(CustomerDTO customer)
         {
-            customerData.AddCustomer(customer);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + customer.id, customer);
+            try
+            {
+                var createdCustomer = customerData.AddCustomer(customer);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdCustomer.id, customer);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteCustomer(Guid id)
         {
-            var customerCheck = customerData.GetCustomer(id);
-            if (customerCheck != null)
+            try
             {
-                customerData.DeleteCustomer(id);
-                return Ok();
+                var customerCheck = customerData.GetCustomer(id);
+                if (customerCheck != null)
+                {
+                    customerData.DeleteCustomer(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditCustomer(Guid id, Customer customer)
+        public IActionResult EditCustomer(Guid id, CustomerDTO customer)
         {
-            Customer customerCheck = customerData.GetCustomer(id);
-            if (customer != null)
+            try
             {
-                customer.id = customerCheck.id;
-                customerData.EditCustomer(customer);
-                return Ok(customer);
+                Customer customerCheck = customerData.GetCustomer(id);
+                if (customer != null)
+                {
+                    customerData.EditCustomer(customerCheck.id, customer);
+                    return Ok(customer);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

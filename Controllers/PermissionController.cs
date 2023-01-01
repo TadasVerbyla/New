@@ -19,54 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetPermissions()
         {
-            return Ok(permissionData.GetPermissions());
+            try
+            {
+                return Ok(permissionData.GetPermissions());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetPermission(Guid id)
         {
-            var permission = permissionData.GetPermission(id);
-            if (permission == null)
+            try
             {
-                return NotFound();
+                var permission = permissionData.GetPermission(id);
+                if (permission == null)
+                {
+                    return NotFound();
+                }
+                return Ok(permissionData.GetPermission(id));
             }
-            return Ok(permissionData.GetPermission(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddPermission(Permission permission)
+        public IActionResult AddPermission(PermissionDTO permission)
         {
-            permissionData.AddPermission(permission);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + permission.id, permission);
+            try
+            {
+                var createdPermission = permissionData.AddPermission(permission);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdPermission.id, permission);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeletePermission(Guid id)
         {
-            var permissionCheck = permissionData.GetPermission(id);
-            if (permissionCheck != null)
+            try
             {
-                permissionData.DeletePermission(id);
-                return Ok();
+                var permissionCheck = permissionData.GetPermission(id);
+                if (permissionCheck != null)
+                {
+                    permissionData.DeletePermission(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditPermission(Guid id, Permission permission)
+        public IActionResult EditPermission(Guid id, PermissionDTO permission)
         {
-            Permission permissionCheck = permissionData.GetPermission(id);
-            if (permission != null)
+            try
             {
-                permission.id = permissionCheck.id;
-                permissionData.EditPermission(permission);
-                return Ok(permission);
+                Permission permissionCheck = permissionData.GetPermission(id);
+                if (permission != null)
+                {
+                    permissionData.EditPermission(permissionCheck.id, permission);
+                    return Ok(permission);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

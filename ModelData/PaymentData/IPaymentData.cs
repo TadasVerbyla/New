@@ -6,8 +6,8 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
     {
         List<Payment> GetPayments();
         Payment GetPayment(Guid id);
-        Payment AddPayment(Payment payment);
+        Payment AddPayment(PaymentDTO payment);
         void DeletePayment(Guid id);
-        Payment EditPayment(Payment payment);
+        Payment EditPayment(Guid id, PaymentDTO payment);
     }
 }

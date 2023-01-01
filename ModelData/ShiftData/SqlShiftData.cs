@@ -11,12 +11,16 @@ namespace Point_of_Sale_Lab3.ModelData.ShiftData
             context = _context;
         }
 
-        public Shift AddShift(Shift shift)
+        public Shift AddShift(ShiftDTO shift)
         {
-            shift.id = Guid.NewGuid();
-            context.Shifts.Add(shift);
+            Shift _shift = new Shift();
+            _shift.endTime = shift.endTime;
+            _shift.startTime = shift.startTime;
+            _shift.workdays = shift.workdays;
+            _shift.id = Guid.NewGuid();
+            context.Shifts.Add(_shift);
             context.SaveChanges();
-            return shift;
+            return _shift;
         }
 
         public void DeleteShift(Guid id)
@@ -25,15 +29,15 @@ namespace Point_of_Sale_Lab3.ModelData.ShiftData
             context.SaveChanges();
         }
 
-        public Shift EditShift(Shift shift)
+        public Shift EditShift(Guid id, ShiftDTO shift)
         {
-            var existing = context.Shifts.Find(shift.id);
+            var existing = context.Shifts.Find(id);
             existing.startTime = shift.startTime;
             existing.endTime = shift.endTime;
             existing.workdays = shift.workdays;
             context.Shifts.Update(existing);
             context.SaveChanges();
-            return shift;
+            return existing;
         }
 
         public Shift GetShift(Guid id)

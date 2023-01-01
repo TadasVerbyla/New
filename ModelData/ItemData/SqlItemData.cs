@@ -11,12 +11,19 @@ namespace Point_of_Sale_Lab3.ModelData.ItemData
             context = _context;
         }
 
-        public Item AddItem(Item item)
+        public Item AddItem(ItemDTO item)
         {
-            item.id = Guid.NewGuid();
-            context.Items.Add(item);
+            Item _item = new Item();
+            _item.description = item.description;
+            _item.discountId = item.discountId;
+            _item.name = item.name;
+            _item.price = item.price;
+            _item.rating = item.rating;
+            _item.taxablePercent = item.taxablePercent;
+            _item.id = Guid.NewGuid();
+            context.Items.Add(_item);
             context.SaveChanges();
-            return item;
+            return _item;
         }
 
         public void DeleteItem(Guid id)
@@ -25,9 +32,9 @@ namespace Point_of_Sale_Lab3.ModelData.ItemData
             context.SaveChanges();
         }
 
-        public Item EditItem(Item item)
+        public Item EditItem(Guid id, ItemDTO item)
         {
-            var existing = context.Items.Find(item.id);
+            var existing = context.Items.Find(id);
             existing.name = item.name;
             existing.price = item.price;
             existing.taxablePercent = item.taxablePercent;
@@ -36,7 +43,7 @@ namespace Point_of_Sale_Lab3.ModelData.ItemData
             existing.discountId = item.discountId;
             context.Items.Update(existing);
             context.SaveChanges();
-            return item;
+            return existing;
         }
 
         public Item GetItem(Guid id)

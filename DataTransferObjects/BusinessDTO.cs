@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Lab3.Models
 {
-    public class Permission
+    public class BusinessDTO
     {
-        public Guid id { get; set; }
         public string name { get; set; }
+        public string address { get; set; }
+        public DateTime opening { get; set; }
+        public DateTime closing { get; set; }
+        public string websiteLink { get; set; }
+        public string accountNumber { get; set; }
 
     }
 }

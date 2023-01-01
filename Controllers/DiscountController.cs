@@ -19,54 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetDiscounts()
         {
-            return Ok(discountData.GetDiscounts());
+            try
+            {
+                return Ok(discountData.GetDiscounts());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetDiscount(Guid id)
         {
-            var discount = discountData.GetDiscount(id);
-            if (discount == null)
+            try
             {
-                return NotFound();
+                var discount = discountData.GetDiscount(id);
+                if (discount == null)
+                {
+                    return NotFound();
+                }
+                return Ok(discountData.GetDiscount(id));
             }
-            return Ok(discountData.GetDiscount(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
-        public IActionResult AddDiscount(Discount discount)
+        public IActionResult AddDiscount(DiscountDTO discount)
         {
-            discountData.AddDiscount(discount);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + discount.id, discount);
+            try
+            {
+                var createdDiscount = discountData.AddDiscount(discount);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdDiscount.id, discount);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteDiscount(Guid id)
         {
-            var discountCheck = discountData.GetDiscount(id);
-            if (discountCheck != null)
+            try
             {
-                discountData.DeleteDiscount(id);
-                return Ok();
+                var discountCheck = discountData.GetDiscount(id);
+                if (discountCheck != null)
+                {
+                    discountData.DeleteDiscount(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
-        public IActionResult EditDiscount(Guid id, Discount discount)
+        public IActionResult EditDiscount(Guid id, DiscountDTO discount)
         {
-            Discount discountCheck = discountData.GetDiscount(id);
-            if (discount != null)
+            try
             {
-                discount.id = discountCheck.id;
-                discountData.EditDiscount(discount);
-                return Ok(discount);
+                Discount discountCheck = discountData.GetDiscount(id);
+                if (discount != null)
+                {
+                    discountData.EditDiscount(discountCheck.id, discount);
+                    return Ok(discount);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

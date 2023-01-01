@@ -11,12 +11,19 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
             context = _context;
         }
 
-        public Customer AddCustomer(Customer customer)
+        public Customer AddCustomer(CustomerDTO customer)
         {
-            customer.id = Guid.NewGuid();
-            context.Customers.Add(customer);
+            Customer _customer = new Customer();
+            _customer.birthdate = customer.birthdate;
+            _customer.email = customer.email;
+            _customer.firstName = customer.firstName;
+            _customer.lastName = customer.lastName;
+            _customer.password = customer.password;
+            _customer.username = customer.username;
+            _customer.id = Guid.NewGuid();
+            context.Customers.Add(_customer);
             context.SaveChanges();
-            return customer;
+            return _customer;
         }
 
         public void DeleteCustomer(Guid id)
@@ -25,9 +32,9 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
             context.SaveChanges();
         }
 
-        public Customer EditCustomer(Customer customer)
+        public Customer EditCustomer(Guid id, CustomerDTO customer)
         {
-            var existing = context.Customers.Find(customer.id);
+            var existing = context.Customers.Find(id);
             existing.firstName = customer.firstName;
             existing.lastName = customer.lastName;
             existing.birthdate = customer.birthdate;
@@ -36,7 +43,7 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
             existing.password = customer.password;
             context.Customers.Update(existing);
             context.SaveChanges();
-            return customer;
+            return existing;
         }
 
         public Customer GetCustomer(Guid id)
