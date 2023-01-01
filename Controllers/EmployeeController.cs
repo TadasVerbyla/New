@@ -19,53 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetEmployees()
         {
-            return Ok(employeeData.GetEmployees());
+            try
+            {
+                return Ok(employeeData.GetEmployees());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetEmployee(Guid id)
         {
-            var employee = employeeData.GetEmployee(id);
-            if (employee == null)
+            try
             {
-                return NotFound();
+                var employee = employeeData.GetEmployee(id);
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+                return Ok(employeeData.GetEmployee(id));
             }
-            return Ok(employeeData.GetEmployee(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
         public IActionResult AddEmployee(EmployeeDTO employee)
-        { 
-            var createdEmployee = employeeData.AddEmployee(employee);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdEmployee.id, employee);
+        {
+            try
+            {
+                var createdEmployee = employeeData.AddEmployee(employee);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdEmployee.id, employee);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteEmployee(Guid id)
         {
-            var employeeCheck = employeeData.GetEmployee(id);
-            if (employeeCheck != null)
+            try
             {
-                employeeData.DeleteEmployee(id);
-                return Ok();
+                var employeeCheck = employeeData.GetEmployee(id);
+                if (employeeCheck != null)
+                {
+                    employeeData.DeleteEmployee(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
         public IActionResult EditEmployee(Guid id, EmployeeDTO employee)
         {
-            Employee employeeCheck = employeeData.GetEmployee(id);
-            if (employee != null)
+            try
             {
-                employeeData.EditEmployee(employeeCheck.id, employee);
-                return Ok(employee);
+                Employee employeeCheck = employeeData.GetEmployee(id);
+                if (employee != null)
+                {
+                    employeeData.EditEmployee(employeeCheck.id, employee);
+                    return Ok(employee);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

@@ -23,53 +23,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetSupportRequests()
         {
-            return Ok(supportRequestData.GetSupportRequests());
+            try
+            {
+                return Ok(supportRequestData.GetSupportRequests());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetSupportRequest(Guid id)
         {
-            var supportRequest = supportRequestData.GetSupportRequest(id);
-            if (supportRequest == null)
+            try
             {
-                return NotFound();
+                var supportRequest = supportRequestData.GetSupportRequest(id);
+                if (supportRequest == null)
+                {
+                    return NotFound();
+                }
+                return Ok(supportRequestData.GetSupportRequest(id));
             }
-            return Ok(supportRequestData.GetSupportRequest(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
         public IActionResult AddSupportRequest(SupportRequestDTO supportRequest)
         {
-            var createdSupportRequest = supportRequestData.AddSupportRequest(supportRequest);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdSupportRequest.id, supportRequest);
+            try
+            {
+                var createdSupportRequest = supportRequestData.AddSupportRequest(supportRequest);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdSupportRequest.id, supportRequest);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteSupportRequest(Guid id)
         {
-            var supportRequestCheck = supportRequestData.GetSupportRequest(id);
-            if (supportRequestCheck != null)
+            try
             {
-                supportRequestData.DeleteSupportRequest(id);
-                return Ok();
+                var supportRequestCheck = supportRequestData.GetSupportRequest(id);
+                if (supportRequestCheck != null)
+                {
+                    supportRequestData.DeleteSupportRequest(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
         public IActionResult EditSupportRequest(Guid id, SupportRequestDTO supportRequest)
         {
-            SupportRequest supportRequestCheck = supportRequestData.GetSupportRequest(id);
-            if (supportRequest != null)
+            try
             {
-                supportRequestData.EditSupportRequest(supportRequestCheck.id, supportRequest);
-                return Ok(supportRequest);
+                SupportRequest supportRequestCheck = supportRequestData.GetSupportRequest(id);
+                if (supportRequest != null)
+                {
+                    supportRequestData.EditSupportRequest(supportRequestCheck.id, supportRequest);
+                    return Ok(supportRequest);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

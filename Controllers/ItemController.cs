@@ -19,53 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetItems()
         {
-            return Ok(itemData.GetItems());
+            try
+            {
+                return Ok(itemData.GetItems());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetItem(Guid id)
         {
-            var item = itemData.GetItem(id);
-            if (item == null)
+            try
             {
-                return NotFound();
+                var item = itemData.GetItem(id);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                return Ok(itemData.GetItem(id));
             }
-            return Ok(itemData.GetItem(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
         public IActionResult AddItem(ItemDTO item)
         {
-            var createdItem = itemData.AddItem(item);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdItem.id, item);
+            try
+            {
+                var createdItem = itemData.AddItem(item);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdItem.id, item);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteItem(Guid id)
         {
-            var itemCheck = itemData.GetItem(id);
-            if (itemCheck != null)
+            try
             {
-                itemData.DeleteItem(id);
-                return Ok();
+                var itemCheck = itemData.GetItem(id);
+                if (itemCheck != null)
+                {
+                    itemData.DeleteItem(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
         public IActionResult EditItem(Guid id, ItemDTO item)
         {
-            Item itemCheck = itemData.GetItem(id);
-            if (item != null)
+            try
             {
-                itemData.EditItem(itemCheck.id, item);
-                return Ok(item);
+                Item itemCheck = itemData.GetItem(id);
+                if (item != null)
+                {
+                    itemData.EditItem(itemCheck.id, item);
+                    return Ok(item);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }

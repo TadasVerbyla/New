@@ -19,53 +19,93 @@ namespace Point_of_Sale_Lab3.Controllers
         [Route("PoS/[controller]")]
         public IActionResult GetShifts()
         {
-            return Ok(shiftData.GetShifts());
+            try
+            {
+                return Ok(shiftData.GetShifts());
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]
         [Route("PoS/[controller]/{id}")]
         public IActionResult GetShift(Guid id)
         {
-            var shift = shiftData.GetShift(id);
-            if (shift == null)
+            try
             {
-                return NotFound();
+                var shift = shiftData.GetShift(id);
+                if (shift == null)
+                {
+                    return NotFound();
+                }
+                return Ok(shiftData.GetShift(id));
             }
-            return Ok(shiftData.GetShift(id));
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         [Route("PoS/[controller]")]
         public IActionResult AddShift(ShiftDTO shift)
         {
-            var createdShift = shiftData.AddShift(shift);
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdShift.id, shift);
+            try
+            {
+                var createdShift = shiftData.AddShift(shift);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + createdShift.id, shift);
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete]
         [Route("PoS/[controller]/{id}")]
         public IActionResult DeleteShift(Guid id)
         {
-            var shiftCheck = shiftData.GetShift(id);
-            if (shiftCheck != null)
+            try
             {
-                shiftData.DeleteShift(id);
-                return Ok();
+                var shiftCheck = shiftData.GetShift(id);
+                if (shiftCheck != null)
+                {
+                    shiftData.DeleteShift(id);
+                    return Ok();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
         public IActionResult EditShift(Guid id, ShiftDTO shift)
         {
-            Shift shiftCheck = shiftData.GetShift(id);
-            if (shift != null)
+            try
             {
-                shiftData.EditShift(shiftCheck.id, shift);
-                return Ok(shift);
+                Shift shiftCheck = shiftData.GetShift(id);
+                if (shift != null)
+                {
+                    shiftData.EditShift(shiftCheck.id, shift);
+                    return Ok(shift);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
         }
     }
 }
