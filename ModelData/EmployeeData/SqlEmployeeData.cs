@@ -21,6 +21,16 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             _employee.username= employee.username;
             _employee.password= employee.password;
             _employee.shiftId= employee.shiftId;
+            _employee.id = Guid.NewGuid();
+            _employee.permissions = new List<Permission>();
+            foreach(Guid permissionId in employee.permissionIds)
+            {
+                Permission p = context.Permissions.Find(permissionId);
+                if(p != null)
+                {
+                    _employee.permissions.Add(p);
+                }
+            }
             context.Employees.Add(_employee);
             context.SaveChanges();
             return _employee;
@@ -42,6 +52,16 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
             existing.username = employee.username;
             existing.password = employee.password;
             existing.shiftId = employee.shiftId;
+            List<Permission> permissions = new List<Permission>();
+            foreach(Guid permissionId in employee.permissionIds)
+            {
+                Permission p = context.Permissions.Find(permissionId);
+                if(p != null)
+                {
+                    permissions.Add(p);
+                }
+            }
+            existing.permissions = permissions; 
             context.Employees.Update(existing);
             context.SaveChanges();
             return existing;

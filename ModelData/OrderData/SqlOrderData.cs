@@ -24,6 +24,15 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             _order.comments = order.comments;
             _order.deliveryAddress = order.deliveryAddress;
             _order.id = Guid.NewGuid();
+            _order.items = new List<Item>();
+            foreach (Guid itemId in order.itemIds)
+            {
+                Item i = context.Items.Find(itemId);
+                if (i != null)
+                {
+                    _order.items.Add(i);
+                }
+            }
             context.Orders.Add(_order);
             context.SaveChanges();
             return _order;
@@ -47,6 +56,16 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             existing.comments = order.comments;
             existing.discountId = order.discountId;
             existing.deliveryAddress = order.deliveryAddress;
+            List<Item> items = new List<Item>();
+            foreach (Guid itemId in order.itemIds)
+            {
+                Item i = context.Items.Find(itemId);
+                if (i != null)
+                {
+                    items.Add(i);
+                }
+            }
+            existing.items = items;
             context.Orders.Update(existing);
             context.SaveChanges();
             return existing;

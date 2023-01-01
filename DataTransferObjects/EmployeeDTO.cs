@@ -16,6 +16,7 @@ namespace Point_of_Sale_Lab3.Models
         public DateTime birthdate { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public Guid[] permissionIds { get; set; }
 
     }
 }

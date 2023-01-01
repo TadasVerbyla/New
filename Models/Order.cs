@@ -26,18 +26,14 @@ namespace Point_of_Sale_Lab3.Models
         [ForeignKey("discountId")]
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Discount discount { get; set; }
-        //public List<Guid> itemIds { get; set; }
-
-        //[ForeignKey("itemIds")]
-        //public virtual List<Item> items { get; set; }
 
         public OrderStatus status { get; set; }
         public double price { get; set; }
         public DateTime createdOn { get; set; }
         public DateTime completedOn { get; set; }
         public string comments { get; set; }
-
         public string deliveryAddress { get; set; }
+        public List<Item> items { get; set; }
 
     }
 }

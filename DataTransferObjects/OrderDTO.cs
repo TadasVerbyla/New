@@ -18,6 +18,7 @@ namespace Point_of_Sale_Lab3.Models
         public DateTime completedOn { get; set; }
         public string comments { get; set; }
         public string deliveryAddress { get; set; }
+        public Guid[] itemIds { get; set; }
 
     }
 }
