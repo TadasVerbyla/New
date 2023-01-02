@@ -9,5 +9,7 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
         Discount AddDiscount(DiscountDTO discount);
         void DeleteDiscount(Guid id);
         Discount EditDiscount(Guid id, DiscountDTO discount);
+        Discount PatchDiscount(Guid id, DiscountDTO discount);
+
     }
 }

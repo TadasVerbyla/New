@@ -89,6 +89,28 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchBusiness(Guid id, BusinessDTO business)
+        {
+            try
+            {
+                Business businessCheck = businessData.GetBusiness(id);
+                if (business != null)
+                {
+                    businessData.PatchBusiness(businessCheck.id, business);
+                    return Ok(businessCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                Console.WriteLine(e.Message + " " + e.StackTrace);
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditBusiness(Guid id, BusinessDTO business)
         {
             try

@@ -10,6 +10,7 @@ using Point_of_Sale_Lab3.ModelData.OrderData;
 using Point_of_Sale_Lab3.ModelData.PermissionData;
 using Point_of_Sale_Lab3.ModelData.ShiftData;
 using Point_of_Sale_Lab3.ModelData.SupportRequestData;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,10 +33,15 @@ builder.Services.AddScoped<IPermissionData, SqlPermissionData>();
 builder.Services.AddScoped<IShiftData, SqlShiftData>();
 builder.Services.AddScoped<ISupportRequestData, SqlSupportRequestData>();
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
 
 var app = builder.Build();
 

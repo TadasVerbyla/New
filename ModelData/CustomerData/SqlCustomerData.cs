@@ -1,4 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
+using Point_of_Sale_Lab3.Helpers;
 using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.ModelData.CustomerData
@@ -14,7 +15,7 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
         public Customer AddCustomer(CustomerDTO customer)
         {
             Customer _customer = new Customer();
-            _customer.birthdate = customer.birthdate;
+            _customer.birthdate = (DateTime)customer.birthdate;
             _customer.email = customer.email;
             _customer.firstName = customer.firstName;
             _customer.lastName = customer.lastName;
@@ -37,13 +38,29 @@ namespace Point_of_Sale_Lab3.ModelData.CustomerData
             var existing = context.Customers.Find(id);
             existing.firstName = customer.firstName;
             existing.lastName = customer.lastName;
-            existing.birthdate = customer.birthdate;
+            existing.birthdate = (DateTime)customer.birthdate;
             existing.email = customer.email;
             existing.username = customer.username;
             existing.password = customer.password;
             context.Customers.Update(existing);
             context.SaveChanges();
             return existing;
+        }
+
+        public Customer PatchCustomer(Guid id, CustomerDTO customer)
+        {
+            var existing = context.Customers.Find(id);
+            if (existing != null)
+            {
+                existing = EntityHelper.PatchEntity<Customer>(existing, customer);
+                context.Customers.Update(existing);
+                context.SaveChanges();
+                return existing;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Customer GetCustomer(Guid id)

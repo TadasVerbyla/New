@@ -1,4 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
+using Point_of_Sale_Lab3.Helpers;
 using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.ModelData.DiscountData
@@ -14,13 +15,13 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
         public Discount AddDiscount(DiscountDTO discount)
         {
             Discount _discount = new Discount();
-            _discount.amount = discount.amount;
+            _discount.amount = (double)discount.amount;
             _discount.code = discount.code;
-            _discount.discount = discount.discount;
+            _discount.discount = (DiscountType)discount.discount;
             _discount.name = discount.name;
-            _discount.percentage = discount.percentage;
-            _discount.validFrom = discount.validFrom;
-            _discount.validTo = discount.validTo;
+            _discount.percentage = (bool)discount.percentage;
+            _discount.validFrom = (DateTime)discount.validFrom;
+            _discount.validTo = (DateTime)discount.validTo;
             _discount.id = Guid.NewGuid();
             context.Discounts.Add(_discount);
             context.SaveChanges();
@@ -37,15 +38,31 @@ namespace Point_of_Sale_Lab3.ModelData.DiscountData
         {
             var existing = context.Discounts.Find(id);
             existing.name = discount.name;
-            existing.amount = discount.amount;
-            existing.percentage = discount.percentage;
-            existing.discount = discount.discount;
+            existing.amount = (double)discount.amount;
+            existing.percentage = (bool)discount.percentage;
+            existing.discount = (DiscountType)discount.discount;
             existing.code = discount.code;
-            existing.validFrom = discount.validFrom;
-            existing.validTo = discount.validTo;
+            existing.validFrom = (DateTime)discount.validFrom;
+            existing.validTo = (DateTime)discount.validTo;
             context.Discounts.Update(existing);
             context.SaveChanges();
             return existing;
+        }
+
+        public Discount PatchDiscount(Guid id, DiscountDTO discount)
+        {
+            var existing = context.Discounts.Find(id);
+            if (existing != null)
+            {
+                existing = EntityHelper.PatchEntity<Discount>(existing, discount);
+                context.Discounts.Update(existing);
+                context.SaveChanges();
+                return existing;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Discount GetDiscount(Guid id)

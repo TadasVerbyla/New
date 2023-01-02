@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchDiscount(Guid id, DiscountDTO discount)
+        {
+            try
+            {
+                Discount discountCheck = discountData.GetDiscount(id);
+                if (discount != null)
+                {
+                    discountData.PatchDiscount(discountCheck.id, discount);
+                    return Ok(discountCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditDiscount(Guid id, DiscountDTO discount)
         {
             try
@@ -97,7 +118,7 @@ namespace Point_of_Sale_Lab3.Controllers
                 if (discount != null)
                 {
                     discountData.EditDiscount(discountCheck.id, discount);
-                    return Ok(discount);
+                    return Ok(discountCheck);
                 }
                 return NotFound();
             }

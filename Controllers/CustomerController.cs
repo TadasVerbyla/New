@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchCustomer(Guid id, CustomerDTO customer)
+        {
+            try
+            {
+                Customer customerCheck = customerData.GetCustomer(id);
+                if (customer != null)
+                {
+                    customerData.PatchCustomer(customerCheck.id, customer);
+                    return Ok(customerCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditCustomer(Guid id, CustomerDTO customer)
         {
             try
