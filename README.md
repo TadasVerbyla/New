@@ -60,7 +60,7 @@ Our team reviewed the original lab1 datamodel and used it to create the data mod
 
 The following are data entities as specified by the lab2:
 
-### Checkout
+### Checkout -> Payment
 Renamed to Payment in refrence to the entity from lab1 from which Checkout was derived in lab2
 Added missing lab1 Payment fields that were missing in lab2 Checkout
 
@@ -83,7 +83,7 @@ Field EmployeeId was removed and instead it is the Employee that has a ShiftId
 ## Support
 Renamed to SupportRequest as was in lab1, added fields misssed from lab1
 
-### User
+### User -> Customer
 Renamed to Customer
 Added username field that was missing in both lab1 and lab2
 
