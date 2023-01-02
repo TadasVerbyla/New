@@ -72,7 +72,8 @@ Implemented according to lab2
 
 ### Order
 Order in .yaml was missing many of the lab1 Order fields, which we added for our data model
-## Permission
+
+### Permission
 Implemented according to lab2
 
 ### Review
@@ -81,7 +82,7 @@ Not implemented for the same reason as Complaint
 ### Shift
 Field EmployeeId was removed and instead it is the Employee that has a ShiftId
 
-## Support -> SupportRequest
+### Support -> SupportRequest
 Renamed to SupportRequest as was in lab1, added fields misssed from lab1
 
 ### User -> Customer
