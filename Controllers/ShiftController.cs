@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchShift(Guid id, ShiftDTO shift)
+        {
+            try
+            {
+                Shift shiftCheck = shiftData.GetShift(id);
+                if (shift != null)
+                {
+                    shiftData.PatchShift(shiftCheck.id, shift);
+                    return Ok(shiftCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditShift(Guid id, ShiftDTO shift)
         {
             try

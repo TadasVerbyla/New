@@ -1,4 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
+using Point_of_Sale_Lab3.Helpers;
 using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.ModelData.PermissionData
@@ -34,6 +35,22 @@ namespace Point_of_Sale_Lab3.ModelData.PermissionData
             context.Permissions.Update(existing);
             context.SaveChanges();
             return existing;
+        }
+
+        public Permission PatchPermission(Guid id, PermissionDTO customer)
+        {
+            var existing = context.Permissions.Find(id);
+            if (existing != null)
+            {
+                existing = EntityHelper.PatchEntity<Permission>(existing, customer);
+                context.Permissions.Update(existing);
+                context.SaveChanges();
+                return existing;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Permission GetPermission(Guid id)

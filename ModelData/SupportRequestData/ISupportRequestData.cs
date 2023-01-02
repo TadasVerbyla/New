@@ -9,5 +9,6 @@ namespace Point_of_Sale_Lab3.ModelData.SupportRequestData
         SupportRequest AddSupportRequest(SupportRequestDTO supportRequest);
         void DeleteSupportRequest(Guid id);
         SupportRequest EditSupportRequest(Guid id, SupportRequestDTO supportRequest);
+        SupportRequest PatchSupportRequest(Guid id, SupportRequestDTO supportRequest);
     }
 }

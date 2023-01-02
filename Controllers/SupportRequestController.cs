@@ -93,6 +93,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchSupportRequest(Guid id, SupportRequestDTO supportRequest)
+        {
+            try
+            {
+                SupportRequest supportRequestCheck = supportRequestData.GetSupportRequest(id);
+                if (supportRequest != null)
+                {
+                    supportRequestData.PatchSupportRequest(supportRequestCheck.id, supportRequest);
+                    return Ok(supportRequestCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditSupportRequest(Guid id, SupportRequestDTO supportRequest)
         {
             try

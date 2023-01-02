@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchEmployee(Guid id, EmployeeDTO employee)
+        {
+            try
+            {
+                Employee employeeCheck = employeeData.GetEmployee(id);
+                if (employee != null)
+                {
+                    employeeData.PatchEmployee(employeeCheck.id, employee);
+                    return Ok(employeeCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditEmployee(Guid id, EmployeeDTO employee)
         {
             try

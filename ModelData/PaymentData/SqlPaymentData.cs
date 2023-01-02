@@ -1,4 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
+using Point_of_Sale_Lab3.Helpers;
 using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.ModelData.PaymentData
@@ -14,14 +15,14 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
         public Payment AddPayment(PaymentDTO payment)
         {
             Payment _payment = new Payment();
-            _payment.customerId = payment.customerId;
-            _payment.employeeId = payment.employeeId;
-            _payment.orderId = payment.orderId;
-            _payment.payedOn = payment.payedOn;
+            _payment.customerId = (Guid)payment.customerId;
+            _payment.employeeId = (Guid)payment.employeeId;
+            _payment.orderId = (Guid)payment.orderId;
+            _payment.payedOn = (DateTime)payment.payedOn;
             _payment.paymentMethod = payment.paymentMethod;
-            _payment.serviceFee = payment.serviceFee;
-            _payment.tip = payment.tip;
-            _payment.totalAmount = payment.totalAmount;
+            _payment.serviceFee = (double)payment.serviceFee;
+            _payment.tip = (double)payment.tip;
+            _payment.totalAmount = (double)payment.totalAmount;
             _payment.id = Guid.NewGuid();
             context.Payments.Add(_payment);
             context.SaveChanges();
@@ -37,15 +38,31 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
         public Payment EditPayment(Guid id, PaymentDTO payment)
         {
             var existing = context.Payments.Find(id);
-            existing.employeeId = payment.employeeId;
+            existing.employeeId = (Guid)payment.employeeId;
             existing.paymentMethod = payment.paymentMethod;
-            existing.customerId = payment.customerId;
+            existing.customerId = (Guid)payment.customerId;
             existing.paymentMethod = payment.paymentMethod;
-            existing.tip = payment.tip;
-            existing.totalAmount = payment.totalAmount;
+            existing.tip = (double)payment.tip;
+            existing.totalAmount = (double)payment.totalAmount;
             context.Payments.Update(existing);
             context.SaveChanges();
             return existing;
+        }
+
+        public Payment PatchPayment(Guid id, PaymentDTO customer)
+        {
+            var existing = context.Payments.Find(id);
+            if (existing != null)
+            {
+                existing = EntityHelper.PatchEntity<Payment>(existing, customer);
+                context.Payments.Update(existing);
+                context.SaveChanges();
+                return existing;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Payment GetPayment(Guid id)

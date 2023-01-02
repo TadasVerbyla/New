@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchPermission(Guid id, PermissionDTO permission)
+        {
+            try
+            {
+                Permission permissionCheck = permissionData.GetPermission(id);
+                if (permission != null)
+                {
+                    permissionData.PatchPermission(permissionCheck.id, permission);
+                    return Ok(permissionCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditPermission(Guid id, PermissionDTO permission)
         {
             try

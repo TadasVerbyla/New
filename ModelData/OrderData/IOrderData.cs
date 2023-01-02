@@ -9,5 +9,6 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
         Order AddOrder(OrderDTO order);
         void DeleteOrder(Guid id);
         Order EditOrder(Guid id, OrderDTO order);
+        Order PatchOrder(Guid id, OrderDTO order);
     }
 }

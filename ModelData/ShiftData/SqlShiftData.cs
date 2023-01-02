@@ -1,4 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
+using Point_of_Sale_Lab3.Helpers;
 using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.ModelData.ShiftData
@@ -14,9 +15,9 @@ namespace Point_of_Sale_Lab3.ModelData.ShiftData
         public Shift AddShift(ShiftDTO shift)
         {
             Shift _shift = new Shift();
-            _shift.endTime = shift.endTime;
-            _shift.startTime = shift.startTime;
-            _shift.workdays = shift.workdays;
+            _shift.endTime = (DateTime)shift.endTime;
+            _shift.startTime = (DateTime)shift.startTime;
+            _shift.workdays = (int)shift.workdays;
             _shift.id = Guid.NewGuid();
             context.Shifts.Add(_shift);
             context.SaveChanges();
@@ -32,12 +33,28 @@ namespace Point_of_Sale_Lab3.ModelData.ShiftData
         public Shift EditShift(Guid id, ShiftDTO shift)
         {
             var existing = context.Shifts.Find(id);
-            existing.startTime = shift.startTime;
-            existing.endTime = shift.endTime;
-            existing.workdays = shift.workdays;
+            existing.startTime = (DateTime)shift.startTime;
+            existing.endTime = (DateTime)shift.endTime;
+            existing.workdays = (int)shift.workdays;
             context.Shifts.Update(existing);
             context.SaveChanges();
             return existing;
+        }
+
+        public Shift PatchShift(Guid id, ShiftDTO customer)
+        {
+            var existing = context.Shifts.Find(id);
+            if (existing != null)
+            {
+                existing = EntityHelper.PatchEntity<Shift>(existing, customer);
+                context.Shifts.Update(existing);
+                context.SaveChanges();
+                return existing;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Shift GetShift(Guid id)

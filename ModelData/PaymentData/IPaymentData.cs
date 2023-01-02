@@ -9,5 +9,6 @@ namespace Point_of_Sale_Lab3.ModelData.PaymentData
         Payment AddPayment(PaymentDTO payment);
         void DeletePayment(Guid id);
         Payment EditPayment(Guid id, PaymentDTO payment);
+        Payment PatchPayment(Guid id, PaymentDTO payment);
     }
 }

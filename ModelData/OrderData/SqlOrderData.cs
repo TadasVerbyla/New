@@ -1,4 +1,5 @@
 ﻿using Point_of_Sale_Lab3.DB;
+using Point_of_Sale_Lab3.Helpers;
 using Point_of_Sale_Lab3.Models;
 
 namespace Point_of_Sale_Lab3.ModelData.OrderData
@@ -14,13 +15,13 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
         public Order AddOrder(OrderDTO order)
         {
             Order _order = new Order();
-            _order.customerId = order.customerId;
-            _order.businessId = order.businessId;
-            _order.discountId = order.discountId;
-            _order.status = order.status;
-            _order.price = order.price;
-            _order.createdOn = order.createdOn;
-            _order.completedOn = order.completedOn;
+            _order.customerId = (Guid)order.customerId;
+            _order.businessId = (Guid)order.businessId;
+            _order.discountId = (Guid)order.discountId;
+            _order.status = (OrderStatus)order.status;
+            _order.price = (double)order.price;
+            _order.createdOn = (DateTime)order.createdOn;
+            _order.completedOn = (DateTime)order.completedOn;
             _order.comments = order.comments;
             _order.deliveryAddress = order.deliveryAddress;
             _order.id = Guid.NewGuid();
@@ -38,6 +39,22 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
             return _order;
         }
 
+        public Order PatchOrder(Guid id, OrderDTO customer)
+        {
+            var existing = context.Orders.Find(id);
+            if (existing != null)
+            {
+                existing = EntityHelper.PatchEntity<Order>(existing, customer);
+                context.Orders.Update(existing);
+                context.SaveChanges();
+                return existing;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void DeleteOrder(Guid id)
         {
             context.Orders.Remove(GetOrder(id));
@@ -47,14 +64,14 @@ namespace Point_of_Sale_Lab3.ModelData.OrderData
         public Order EditOrder(Guid id, OrderDTO order)
         {
             var existing = context.Orders.Find(id);
-            existing.customerId = order.customerId;
-            existing.businessId = order.businessId;
-            existing.status = order.status;
-            existing.price = order.price;
-            existing.createdOn = order.createdOn;
-            existing.completedOn = order.completedOn;
+            existing.customerId = (Guid)order.customerId;
+            existing.businessId = (Guid)order.businessId;
+            existing.status = (OrderStatus)order.status;
+            existing.price = (double)order.price;
+            existing.createdOn = (DateTime)order.createdOn;
+            existing.completedOn = (DateTime)order.completedOn;
             existing.comments = order.comments;
-            existing.discountId = order.discountId;
+            existing.discountId = (Guid)order.discountId;
             existing.deliveryAddress = order.deliveryAddress;
             List<Item> items = new List<Item>();
             foreach (Guid itemId in order.itemIds)

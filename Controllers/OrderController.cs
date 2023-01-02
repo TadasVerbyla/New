@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchOrder(Guid id, OrderDTO order)
+        {
+            try
+            {
+                Order orderCheck = orderData.GetOrder(id);
+                if (order != null)
+                {
+                    orderData.PatchOrder(orderCheck.id, order);
+                    return Ok(orderCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditOrder(Guid id, OrderDTO order)
         {
             try

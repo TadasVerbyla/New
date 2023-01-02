@@ -9,5 +9,6 @@ namespace Point_of_Sale_Lab3.ModelData.ItemData
         Item AddItem(ItemDTO item);
         void DeleteItem(Guid id);
         Item EditItem(Guid id, ItemDTO item);
+        Item PatchItem(Guid id, ItemDTO item);
     }
 }

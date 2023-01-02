@@ -9,5 +9,6 @@ namespace Point_of_Sale_Lab3.ModelData.EmployeeData
         Employee AddEmployee(EmployeeDTO employee);
         void DeleteEmployee(Guid id);
         Employee EditEmployee(Guid id, EmployeeDTO employee);
+        Employee PatchEmployee(Guid id, EmployeeDTO employee);
     }
 }

@@ -89,6 +89,27 @@ namespace Point_of_Sale_Lab3.Controllers
 
         [HttpPatch]
         [Route("PoS/[controller]/{id}")]
+        public IActionResult PatchPayment(Guid id, PaymentDTO payment)
+        {
+            try
+            {
+                Payment paymentCheck = paymentData.GetPayment(id);
+                if (payment != null)
+                {
+                    paymentData.PatchPayment(paymentCheck.id, payment);
+                    return Ok(paymentCheck);
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                //TODO: Log exception internally
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPut]
+        [Route("PoS/[controller]/{id}")]
         public IActionResult EditPayment(Guid id, PaymentDTO payment)
         {
             try
