@@ -79,8 +79,9 @@ Implemented according to lab2
 Not implemented for the same reason as Complaint
 
 ### Shift
-Field EmployeeId was removed and instead it is the Employee that has a ShiftId	
-## Support
+Field EmployeeId was removed and instead it is the Employee that has a ShiftId
+
+## Support -> SupportRequest
 Renamed to SupportRequest as was in lab1, added fields misssed from lab1
 
 ### User -> Customer
