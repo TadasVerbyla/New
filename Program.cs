@@ -19,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 //builder.Services.AddSingleton<ICheckoutData, MockCheckoutData>();
 builder.Services.AddDbContextPool<PointOfSaleContext>
-    (options => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Database=PointOfSaleSystem;Trusted_Connection=True"));
+    (options => options.UseInMemoryDatabase(@"Data Source=(localdb)\MSSQLLocalDB;Database=PointOfSaleSystem;Trusted_Connection=True"));
 
 //Services to add
 builder.Services.AddScoped<IBusinessData, SqlBusinessData>();

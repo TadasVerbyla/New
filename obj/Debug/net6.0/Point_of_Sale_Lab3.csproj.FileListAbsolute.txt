@@ -176,3 +176,4 @@ C:\Users\mikry\source\repos\Team-SHIFT\obj\Debug\net6.0\staticwebassets.pack.jso
 C:\Users\mikry\source\repos\Team-SHIFT\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\mikry\source\repos\Team-SHIFT\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\mikry\source\repos\Team-SHIFT\obj\Debug\net6.0\scopedcss\bundle\Point_of_Sale_Lab3.styles.css
+C:\Users\tadas\Desktop\Team-SHIFT\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
