@@ -8,6 +8,8 @@ Then, execute the command `dotnet run`.
 
 After the project has been built, open `https://localhost:7056/swagger/index.html` in your browser. 
 
+If there are problems with launching the project on MacOS, we are ready to give a live demo of the project. 
+
 ## General information:
                           
 
